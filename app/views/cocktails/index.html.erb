@@ -1,7 +1,29 @@
-<div class="container pad20">
-  <!-- Heading -->
-  <h1 class="text-underline text-brand">Cocktails</h1>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "/cocktails", class: "navbar-brand" do %>
+    <%= image_tag "https://png.pngtree.com/png-clipart/20190705/original/pngtree-cocktail-icon-design-png-image_4316053.jpg" %>
+  <% end %>
 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "Add your cocktail", new_cocktail_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+<div class="container pad20">
+
+  <h1 class="text-underline text-brand">Cocktails</h1>
 
   <div class="row">
 
@@ -18,10 +40,5 @@
     </div>
     <% end %>
   </div>
-
-  <div class="pad10">
-    <%= link_to "Add your cocktail", new_cocktail_path, class: "btn btn-primary pad20" %>
-  </div>
-
 </div>
 

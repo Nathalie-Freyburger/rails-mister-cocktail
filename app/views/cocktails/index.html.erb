@@ -18,9 +18,6 @@
 </div>
 
 
-
-
-
 <div class="container pad20">
 
   <h1 class="text-underline text-brand">Cocktails</h1>
@@ -31,11 +28,11 @@
 
     <div class="col-xs-12 col-sm-4">
       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                  url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/halloween-cocktail-recipes-1530203016.jpg');">
+                  url(https://source.unsplash.com/500x400/?cocktail);">
         <div class="card-description">
           <h2> <%= cocktail.name  %> </h2>
         </div>
-        <%= link_to "More Infos", cocktail_path(cocktail), class: "card-link" %>
+        <%= link_to "", cocktail_path(cocktail), class: "card-link" %>
       </div>
     </div>
     <% end %>

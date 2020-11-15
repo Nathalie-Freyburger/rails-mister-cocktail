@@ -24,24 +24,20 @@
 </div>
 
 
-<div class="container pad20">
-
-  <h1 class="text-underline text-brand">Cocktails</h1>
-
-  <div class="row">
-
-    <% @cocktails.each do |cocktail| %>
-
-    <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                  url(https://source.unsplash.com/500x400/?cocktail);">
-        <div class="card-description">
-          <h2> <%= cocktail.name  %> </h2>
-        </div>
-        <%= link_to "", cocktail_path(cocktail), class: "card-link" %>
+<div class="d-flex flex-wrap justify-content-around">
+  <% @cocktails.each do |cocktail| %>
+      <div class="card m-5" style="width: 18rem;">
+          <%= link_to cocktail_path(cocktail) do %>
+            <% if cocktail.photo.attached? %>
+              <%= cl_image_tag cocktail.photo.key, height: 400, width: 400, crop: :fill, class: "card-img-top img-fluid" %>
+            <% else %>
+              <%= image_tag "question_mark.jpg", alt: "Question mark", height: 400, width: 400, class: "card-img-top img-fluid" %>
+            <% end %>
+            <div class="card-body">
+              <h3><%= cocktail.name %></h3>
+            </div>
+          <% end %>
       </div>
-    </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>
 

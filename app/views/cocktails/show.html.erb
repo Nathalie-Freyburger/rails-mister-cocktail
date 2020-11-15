@@ -21,10 +21,18 @@
 
 <div class="container pad20">
 
-<h1> <%= @cocktail.name %> </h1>
-
 <% if @cocktail.photo.attached? %>
- <%= cl_image_tag(@cocktail.photo, width: 400, height: 300, crop: :fill) %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @cocktail.photo.key %>')">
+    <div class="container">
+      <h1 class="m-2"><%= @cocktail.name %></h1>
+    </div>
+  </div>
+<% else %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://source.unsplash.com/500x400/?cocktail)')">
+    <div class="container">
+      <h1 class="m-2"><%= @cocktail.name %></h1>
+    </div>
+  </div>
 <% end %>
 
   <!-- Ingredient -->

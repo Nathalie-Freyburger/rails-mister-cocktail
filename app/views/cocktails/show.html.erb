@@ -49,20 +49,24 @@
 
   <!-- Ingredient list -->
 
-  <ul class="list-unstyled pad20">
-    <% @cocktail.doses.each do |d| %>
-    <li>
-      <i class="fa fa-glass"></i> <strong> <%= d.ingredient.name %> </strong>
-      <%= link_to "Delete", dose_path(d), class: "btn btn-danger btn-xs", method: :delete  %>
-    </li>
-    <p class="pad10"><%= d.description %></p>
-    <% end %>
-  </ul>
-  <div class="pad20">
-    <%= link_to "Add ingredient", new_cocktail_dose_path(@cocktail), class: "btn btn-primary", id: "ingredient-add-button"%>
-    <%= link_to "Go back", cocktails_path, class: "btn btn-warning" %>
-  </div>
+ <div class="d-flex">
+  <% @cocktail.doses.each do |dose| %>
+      <div>
+        <h5><%= dose.ingredient.name %> - <%= dose.description %></h5>
+      </div>
+        <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?"} do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+  <% end %>
 </div>
+
+<%= simple_form_for [@cocktail, @dose], html: { class: 'simple-form' } do |f| %>
+  <%= f.association :ingredient, input_html: { class: 'select2' } %>
+  <%= f.input :description %>
+  <%= f.submit "Add", class: "btn btn-dark" %>
+<% end %>
+
+<%= link_to "Back to the list", cocktails_path, class: "btn btn-secondary m-3" %>
 
 
 <%= link_to "destroy cocktail", cocktail_path(@cocktail),
